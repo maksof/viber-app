@@ -12,7 +12,6 @@
         $file = explode($lineBreak, file_get_contents($myFile));
         for($i=0; $i < count($file); $i++){
             $data = explode("#",$file[$i]);
-            echo $data[0] ,$ipAddress;
             if($data[0] == $ipAddress){
                 unset($file[$i]);
             }
