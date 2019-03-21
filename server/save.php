@@ -11,9 +11,9 @@ if(isset($_GET['table']) && isset($_POST['name']) && isset($_POST['ip']))
    	$myFile = getcwd().DIRECTORY_SEPARATOR."db".DIRECTORY_SEPARATOR.$fileUrl;
    	echo $myFile;
    	$fh = fopen($myFile, 'a') or die("Sorry, file can not be opened!");
-   	$lineBreak = "\r\n";
+   	$lineBreak = "\n";
    	$stringData = $ip." #".$serviceName;
-   	fwrite($fh, $stringData.$lineBreak);
+   	fwrite($fh, $lineBreak.$stringData);
    	fclose($fh);
    	header("Location: ../index.php");
 	die();
