@@ -13,7 +13,33 @@
         <link rel="stylesheet" type="text/css" href="assets/css/notify.css">
     </head>
     <body class="background">
-       <div class="modal-dialog text-center">
+        <div class="loginMainContainer">
+            <div class="loginCon text-center">
+                <h2>Login</h2>
+                <form method="post" class='col-12' onsubmit="return loginValidation()" name="loginForm" action="server/checkLogin.php">
+                    <div class="row mx-0">
+                        <div class="col-12">
+                            <div class="form-group">
+                                <input type="text" class="form-control" placeholder="Enter Username" name="email">
+                                <span id="emailErr" class="error"></span>
+                            </div>
+                        </div>
+                        <div class="col-12">
+                            <div class="form-group">
+                                <input type="password" class="form-control" placeholder="Enter Password" name="pass">
+                                <span id="passErr" class="error"></span>
+                            </div>
+                        </div>
+                        <div class="col-12 text-center">
+                            <button type="submit" class="btn btn-primary btn-block button" name="login">
+                                <i class="fa fa-sign-in-alt"></i> Login
+                            </button>
+                        </div>
+                    </div>
+                </form>    
+            </div>
+        </div>
+       <!-- <div class="modal-dialog text-center">
             <div class="col-sm-8 main-section">
                 <div class="modal-content">
                     <form method="post" class='col-12' onsubmit="return loginValidation()" name="loginForm" action="server/checkLogin.php">
@@ -31,7 +57,7 @@
                     </form>
                 </div>
             </div>
-        </div>
+        </div> -->
     </body>
 </html>
 <script src="assets/js/login.js"></script>

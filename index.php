@@ -202,25 +202,25 @@
               <form class="updateips" action="server/update.php" method="post">
                 <input type="hidden" name="ipid" id="ipid">
                   <div class="modal-body">
-                    <div class="col-sm-12 col-md-12">
-                        <div class="col-sm-3 col-md-3">
+                    <div class="row mx-0">
+                        <div class="col-sm-3 form-group col-md-3">
                           <label>Service</label>
                         </div>
-                        <div class="col-sm-9 col-md-9">
+                        <div class="col-sm-9 form-group col-md-9">
                           <input name="serviceName" id="service" value="" type="text" class="form-control" required="">
                         </div>
-                        <div class="col-sm-3 col-md-3">
+                        <div class="col-sm-3 form-group col-md-3">
                           <label>Enter IP</label>
                         </div>
-                        <div class="col-sm-9 col-md-9">
+                        <div class="col-sm-9 form-group col-md-9">
                           <input name="ipName" id="ip" value="117.102.60.113" pattern="\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}" type="text" class="form-control" required="">
                         </div>
-                   </div>
+                    </div>
+                    <div style="text-align:right;padding:0 15px;">
+                      <button class="btn btn-default" data-dismiss="modal" aria-hidden="true">Cancel</button>
+                      <button class="btn btn-danger" type="submit">Update</button>
+                    </div>
                   </div>
-                <div class="modal-footer">
-                  <button class="btn btn-default" data-dismiss="modal" aria-hidden="true">Cancel</button>
-                  <button class="btn btn-danger" type="submit">Update</button>
-                </div>
               </form>
             </div>
           </div>
@@ -278,28 +278,26 @@
               </div>
               <form action="server/save.php?table=NETWORKING" method="post">
                 <div class="modal-body">
-                  <div class="col-sm-12 col-md-12">
-                    <div class="col-sm-3 col-md-3">
+                  <div class="row mx-0">
+                    <div class="col-sm-3 form-group col-md-3">
                       <label>Service</label>
                     </div>
-                    <div class="col-sm-9 col-md-9">
+                    <div class="col-sm-9 form-group col-md-9">
                       <input name="name" value="" type="text" class="form-control" required="">
                     </div>
-                    <div class="col-sm-3 col-md-3">
+                    <div class="col-sm-3 form-group col-md-3">
                       <label>Enter IP</label>
                     </div>
-                    <div class="col-sm-9 col-md-9">
+                    <div class="col-sm-9 form-group col-md-9">
                       <input name="ip" value="117.102.60.113" pattern="\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}" type="text" class="form-control" required="">
                     </div>
                   </div>
-                  <div style="float: right;margin-top:20px;">
+                  <div style="text-align:right;padding:0 15px;">
                     <button class="btn btn-default" data-dismiss="modal" aria-hidden="true">Cancel</button>
                     <button type="submit" class="btn btn-danger">Add</button>
                   </div>
                 </div>
                 <br>
-                <div class="modal-footer">
-                </div>
               </form>
             </div>
           </div>
@@ -315,28 +313,26 @@
               </div>
               <form action="server/save.php?table=ROUTING" method="post">
                 <div class="modal-body">
-                  <div class="col-sm-12 col-md-12">
-                    <div class="col-sm-3 col-md-3">
+                  <div class="row mx-0">
+                    <div class="col-sm-3 form-group col-md-3">
                       <label>Service</label>
                     </div>
-                    <div class="col-sm-9 col-md-9">
+                    <div class="col-sm-9 form-group col-md-9">
                       <input name="name" value="" type="text" class="form-control" required="">
                     </div>
-                    <div class="col-sm-3 col-md-3">
+                    <div class="col-sm-3 form-group col-md-3">
                       <label>Enter IP</label>
                     </div>
-                    <div class="col-sm-9 col-md-9">
+                    <div class="col-sm-9 form-group col-md-9">
                       <input name="ip" value="117.102.60.113" pattern="\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}" type="text" class="form-control" required="">
                     </div>
                   </div>
-                  <div style="float: right;margin-top:20px;">
+                  <div style="text-align:right;padding:0 15px;">
                     <button class="btn btn-default" data-dismiss="modal" aria-hidden="true">Cancel</button>
                     <button type="submit" class="btn btn-danger">Add</button>
                   </div>
                 </div>
                 <br>
-                <div class="modal-footer">
-                </div>
               </form>
             </div>
           </div>
@@ -352,28 +348,26 @@
               </div>
               <form action="server/save.php?table=MAPPING" method="post">
                 <div class="modal-body">
-                  <div class="col-sm-12 col-md-12">
-                    <div class="col-sm-3 col-md-3">
+                  <div class="row mx-0">
+                    <div class="col-sm-3 form-group col-md-3">
                       <label>Service</label>
                     </div>
-                    <div class="col-sm-9 col-md-9">
+                    <div class="col-sm-9 form-group col-md-9">
                       <input name="name" value="" type="text" class="form-control" required="">
                     </div>
-                    <div class="col-sm-3 col-md-3">
+                    <div class="col-sm-3 form-group col-md-3">
                       <label>Enter IP</label>
                     </div>
-                    <div class="col-sm-9 col-md-9">
+                    <div class="col-sm-9 form-group col-md-9">
                       <input name="ip" value="117.102.60.113" pattern="\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}" type="text" class="form-control" required="">
                     </div>
                   </div>
-                  <div style="float: right;margin-top:20px;">
+                  <div style="text-align:right;padding:0 15px;">
                     <button class="btn btn-default" data-dismiss="modal" aria-hidden="true">Cancel</button>
                     <button type="submit" class="btn btn-danger">Add</button>
                   </div>
                 </div>
                 <br>
-                <div class="modal-footer">
-                </div>
               </form>
             </div>
           </div>
