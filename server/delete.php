@@ -1,5 +1,6 @@
 <?php 
 	if(isset($_POST['ipid'])) {
+        session_start();
 		$ipAddress = $_POST['ipid'];
 		$fileType = explode("-", $ipAddress);
 		if($fileType[0] == 'NETWORKING') $fileUrl = "tbl_networking.txt";
@@ -18,6 +19,7 @@
         }
         $file = implode("\n",$file);
         file_put_contents($myFile, $file);
+        $_SESSION['delete'] = 'delete';
         header("Location: ../index.php");
 		die();
 	} else {

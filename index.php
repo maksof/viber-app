@@ -1,4 +1,4 @@
-<?php session_start(); if(!$_SESSION['usename']) header("Location:login.php"); ?>
+<?php session_start(); if(!$_SESSION['username']) header("Location:login.php"); ?>
  <html lang="en">
   <head>
     <meta charset="utf-8">
@@ -14,6 +14,7 @@
     <link rel="stylesheet" type="text/css" href="assets/css/premium.css">
     <link rel="stylesheet" type="text/css" href="assets/css/fonts.css">
     <link rel="stylesheet" type="text/css" href="assets/css/style.css">
+    <link rel="stylesheet" type="text/css" href="assets/css/notify.css">
     <link rel="stylesheet" type="text/css" href="assets/css/dataTables.bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <script src="assets/js/jquery-1.11.1.min.js" type="text/javascript"></script>
@@ -31,11 +32,11 @@
         <ul id="main-menu" class="nav navbar-nav navbar-right">
           <li class="dropdown hidden-xs">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-            <span class="fa fa-user padding-right-small" style="position:relative;top: 3px;"></span> <?php echo $_SESSION['usename']; ?>
+            <span class="fa fa-user padding-right-small" style="position:relative;top: 3px;"></span> <?php echo $_SESSION['username']; ?>
             <i class="fa fa-caret-down"></i>
             </a>
             <ul class="dropdown-menu">
-              <li><a href="http://173.82.52.190:6969/login/index.php/ipallow/editaccount">Password Change</a></li>
+              <li><a href="change-pass.php">Password Change</a></li>
               <li class="divider"></li>
               <li><a tabindex="-1" href="server/logout.php">Logout</a></li>
             </ul>
@@ -163,8 +164,6 @@
                 <?php                       
                       }
                   }
-                  
-                  echo 'User IP - '.$_SERVER['REMOTE_ADDR'];
                 ?>
               </tbody>
             </table>
@@ -381,6 +380,8 @@
         </div>
       </div>
     </div>
+    <script src="assets/js/login.js"></script>
+    <script src="assets/js/notify.js"></script>
 
    <?php
         if(isset($_GET['login'])){
@@ -406,7 +407,19 @@
             }else{
                 echo "<pre style='color:white;'>User Not Login</pre>";
             }
+        }
 
+        if(isset($_SESSION['delete'])){
+            echo "<script> toaster('Success','Data delete successfully','success'); </script>";
+            unset($_SESSION['delete']);
+        }
+        if(isset($_SESSION['update'])){
+            echo "<script> toaster('Success','Data update successfully','success'); </script>";
+            unset($_SESSION['update']);
+        }
+        if(isset($_SESSION['save'])){
+            echo "<script> toaster('Success','Data Add successfully','success'); </script>";
+            unset($_SESSION['save']);
         }
     ?>
    

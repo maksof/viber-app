@@ -29,9 +29,6 @@
                             <i class="fa fa-sign-in-alt"></i> Login
                         </button>
                     </form>
-                    <div class="col-12 forgot">
-                        <a href="#">Forgot Password</a>
-                    </div>
                 </div>
             </div>
         </div>
@@ -41,44 +38,18 @@
 <script src="assets/js/notify.js"></script>
 
 <?php 
-    
-    if(isset($_GET['invalid'])){
-        echo "
-            <script>
-                window.notificationService.notify({
-                  // title
-                  title: 'Login Error!',
-                  // notification message
-                  text: 'Invalid username or password',
-                  // 'success', 'warning', 'error'
-                  type: 'error',
-                  // 'top-right', 'bottom-right', 'top-left', 'bottom-left'
-                  position: 'top-right',
-                  // auto close
-                  autoClose: true,
-                  // 5 seconds
-                  duration: 5000,
-                  // shows close button
-                  showRemoveButton: true
-                })
-
-            </script>";
+    session_start();
+    if(isset($_SESSION['invalid'])){
+        echo "<script> toaster('Login Error','Invalid username or password','error'); </script>";
+        unset($_SESSION['invalid']);
     }
-
-    if(isset($_GET['dateError'])){
-        echo "
-            <script>
-                window.notificationService.notify({
-                  title: 'Login Error!',
-                  text: 'Date is expire please contact admin',
-                  type: 'error',
-                  position: 'top-right',
-                  autoClose: true,
-                  duration: 5000,
-                  showRemoveButton: true
-                })
-
-            </script>";
+    if(isset($_SESSION['passChange'])){
+        echo "<script> toaster('Success','Password change please login again','success'); </script>";
+        unset($_SESSION['passChange']);
+    }
+    if(isset($_SESSION['dateError'])){
+        echo "<script> toaster('Login Error','Date is expire please contact admin','error'); </script>";
+         unset($_SESSION['dateError']);
     }
 
 ?>

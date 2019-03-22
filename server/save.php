@@ -2,7 +2,8 @@
 
 if(isset($_GET['table']) && isset($_POST['name']) && isset($_POST['ip']))
 {	
-   	if($_GET['table'] == 'NETWORKING') $fileUrl = "tbl_networking.txt";
+   	session_start();
+    if($_GET['table'] == 'NETWORKING') $fileUrl = "tbl_networking.txt";
    	else if($_GET['table'] == 'MAPPING') $fileUrl = "tbl_mapping.txt";
    	else if($_GET['table'] == 'ROUTING') $fileUrl = "tbl_routing.txt";
 
@@ -15,6 +16,7 @@ if(isset($_GET['table']) && isset($_POST['name']) && isset($_POST['ip']))
    	$stringData = $ip." #".$serviceName;
    	fwrite($fh, $lineBreak.$stringData);
    	fclose($fh);
+    $_SESSION['save']='save';
    	header("Location: ../index.php");
 	die();
 } else {

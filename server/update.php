@@ -1,6 +1,6 @@
 <?php 
 	if(isset($_POST['ipid'])) {
-        
+        session_start();
         $name = $_POST['serviceName'];
         $ip = $_POST['ipName'];
 		$ipAddress = $_POST['ipid'];
@@ -22,6 +22,7 @@
         }
         $file = implode("\n",$file);
         file_put_contents($myFile, $file);
+        $_SESSION['update'] = 'update';
         header("Location: ../index.php");
 		die();
 	} else {
