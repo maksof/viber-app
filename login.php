@@ -57,8 +57,24 @@
                   // auto close
                   autoClose: true,
                   // 5 seconds
-                  duration: 3000,
+                  duration: 5000,
                   // shows close button
+                  showRemoveButton: true
+                })
+
+            </script>";
+    }
+
+    if(isset($_GET['dateError'])){
+        echo "
+            <script>
+                window.notificationService.notify({
+                  title: 'Login Error!',
+                  text: 'Date is expire please contact admin',
+                  type: 'error',
+                  position: 'top-right',
+                  autoClose: true,
+                  duration: 5000,
                   showRemoveButton: true
                 })
 
