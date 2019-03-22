@@ -169,7 +169,7 @@
             </table>
           </div>
         </div>
-
+     
         <!-- DELETE CONFIRMATION MODAL -->
         <div class="modal small fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
           <div class="modal-dialog">
@@ -207,13 +207,13 @@
                           <label>Service</label>
                         </div>
                         <div class="col-sm-9 col-md-9">
-                          <input name="serviceName" value="" type="text" class="form-control" required="">
+                          <input name="serviceName" id="service" value="" type="text" class="form-control" required="">
                         </div>
                         <div class="col-sm-3 col-md-3">
                           <label>Enter IP</label>
                         </div>
                         <div class="col-sm-9 col-md-9">
-                          <input name="ipName" value="117.102.60.113" pattern="\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}" type="text" class="form-control" required="">
+                          <input name="ipName" id="ip" value="117.102.60.113" pattern="\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}" type="text" class="form-control" required="">
                         </div>
                    </div>
                   </div>
@@ -432,6 +432,23 @@
       $(document).on("click", "#updateIp", function () {
           var id = $(this).data('id');
           $(".updateips #ipid").val( id );
+          var ip = id.split('-');
+          var fileUrl = '';
+          
+          if(ip[0] == 'NETWORKING') fileUrl = "tbl_networking.txt";
+   	      else if(ip[0] == 'MAPPING') fileUrl = "tbl_mapping.txt";
+   	      else if(ip[0] == 'ROUTING') fileUrl = "tbl_routing.txt";
+
+            $.get('server/db/'+fileUrl, function(data) {
+                var lines = data.split("\n");
+                $.each(lines, function(n, elem) {
+                    var fileData = elem.split('#');
+                    if(ip[1] == fileData[0]){
+                        $("#ip").val(fileData[0].trim());
+                        $("#service").val(fileData[1].trim());
+                    }
+                });
+            });
       });
       
       function startfirewall()
