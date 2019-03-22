@@ -37,10 +37,10 @@ var changePassValidate = function(){
         toaster('Warning','Please enter new password','warning');
         return false;
     }else if(!confirmPass){
-        toaster('Warning','Please confirm password','warning');
+        toaster('Warning','Please enter confirm password','warning');
         return false;
     }else if(newPass != confirmPass){
-        toaster('Warning','Both password and confirm password must be same','warning');
+        toaster('Warning','New password and confirm password must be same','warning');
         return false;
     }else{
         return true;
