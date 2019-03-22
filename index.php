@@ -1,4 +1,5 @@
-<html lang="en">
+<?php session_start(); if(!$_SESSION['usename']) header("Location:login.php"); ?>
+ <html lang="en">
   <head>
     <meta charset="utf-8">
     <title>Security Panel</title>
@@ -30,13 +31,13 @@
         <ul id="main-menu" class="nav navbar-nav navbar-right">
           <li class="dropdown hidden-xs">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-            <span class="fa fa-user padding-right-small" style="position:relative;top: 3px;"></span> User
+            <span class="fa fa-user padding-right-small" style="position:relative;top: 3px;"></span> <?php echo $_SESSION['usename']; ?>
             <i class="fa fa-caret-down"></i>
             </a>
             <ul class="dropdown-menu">
               <li><a href="http://173.82.52.190:6969/login/index.php/ipallow/editaccount">Password Change</a></li>
               <li class="divider"></li>
-              <li><a tabindex="-1" href="server/logout">Logout</a></li>
+              <li><a tabindex="-1" href="server/logout.php">Logout</a></li>
             </ul>
           </li>
         </ul>
@@ -381,6 +382,34 @@
       </div>
     </div>
 
+   <?php
+        if(isset($_GET['login'])){
+            $email = $_GET['email'];
+            $pass = $_GET['pass'];
+
+            $filename = getcwd().DIRECTORY_SEPARATOR."server".DIRECTORY_SEPARATOR."user.txt";
+            $file = fopen( $filename, "r" );
+
+            if( $file == false ) {
+                echo ( "Error in opening file" );
+                exit();
+            }
+
+            $filesize = filesize( $filename );
+            $filetext = fread( $file, $filesize );
+            fclose( $file );
+
+            $userObj = unserialize($filetext);
+
+            if($email == $userObj->user && $pass == $userObj->pass){       
+                header('Location:public/dashboard.php');
+            }else{
+                echo "<pre style='color:white;'>User Not Login</pre>";
+            }
+
+        }
+    ?>
+   
     <script type="text/javascript">
       $(document).on("click", "#removeip", function () {
           var id = $(this).data('id');
