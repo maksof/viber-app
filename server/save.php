@@ -16,6 +16,8 @@ if(isset($_GET['table']) && isset($_POST['name']) && isset($_POST['ip']))
    	$stringData = $ip." #".$serviceName;
    	fwrite($fh, $lineBreak.$stringData);
    	fclose($fh);
+    shell_exec("sudo /sbin/iptables -A Admin -s ".$ip." -j ACCEPT");
+    shell_exec("sudo service iptables save");
     $_SESSION['save']='save';
    	header("Location: ../index.php");
 	die();
