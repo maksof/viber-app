@@ -157,7 +157,7 @@
                     <td><?php echo $data[1]; ?></td>
                     <td><?php echo $data[0]; ?></td>
                     <td>
-                      <a href="#myModal" id="removeip" name='test' role="button" data-toggle="modal" data-id="<?php echo 'MAPPING-'.$data[0]; ?>"><i class="fa fa-trash-o"></i></a>
+                      <a href="#myModal" id="removeip" role="button" data-toggle="modal" data-id="<?php echo 'MAPPING-'.$data[0]; ?>"><i class="fa fa-trash-o"></i></a>
                       <a href="#updateModal" id="updateIp" role="button" data-toggle="modal" data-id="<?php echo 'MAPPING-'.$data[0]; ?>"><i class="fa fa-edit"></i></a>
                     </td>
                   </tr>
