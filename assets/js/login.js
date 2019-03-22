@@ -2,10 +2,10 @@ var loginValidation = function(){
     var email = document.forms['loginForm']['email'].value;
     var pass = document.forms['loginForm']['pass'].value;
     if(!email){
-        alert("Please enter email address");
+        toaster('Warning','Enter email','warning');
         return false;
     }else if(!pass){
-        alert("Please enter password address")
+        toaster('Warning','Enter password','warning');
         return false;
     }else{
         return true;
@@ -16,10 +16,10 @@ var NetworkValidation = function(){
     var service = document.forms['netForm']['netService'].value;
     var IP = document.forms['netForm']['netIP'].value;
     if(!service){
-        alert("Please enter Service");
+        toaster('Warning','Enter Service','warning');
         return false;
     }else if(!IP){
-        alert("Please enter IP Address");
+        toaster('Warning','Enter IP','warning');
         return false;
     }else{
         return true;
@@ -31,16 +31,16 @@ var changePassValidate = function(){
     var newPass = document.forms['changePass']['nPass'].value;
     var confirmPass = document.forms['changePass']['cPass'].value;
     if(!prePass){
-        alert("Please previous password");
+        toaster('Warning','Enter previous password','warning');
         return false;
     }else if(!newPass){
-        alert("Enter new password");
+        toaster('Warning','Enter new password','warning');
         return false;
     }else if(!confirmPass){
-        alert("Enter confirm password");
+        toaster('Warning','Enter confirm password','warning');
         return false;
     }else if(newPass != confirmPass){
-        alert("Password not match");
+        toaster('Warning','Password not match','warning');
         return false;
     }else{
         return true;
