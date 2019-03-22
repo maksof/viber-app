@@ -26,6 +26,27 @@ var NetworkValidation = function(){
     }
 }
 
+var changePassValidate = function(){
+    var prePass = document.forms['changePass']['pPass'].value;
+    var newPass = document.forms['changePass']['nPass'].value;
+    var confirmPass = document.forms['changePass']['cPass'].value;
+    if(!prePass){
+        alert("Please previous password");
+        return false;
+    }else if(!newPass){
+        alert("Enter new password");
+        return false;
+    }else if(!confirmPass){
+        alert("Enter confirm password");
+        return false;
+    }else if(newPass != confirmPass){
+        alert("Password not match");
+        return false;
+    }else{
+        return true;
+    }
+}
+
 var deleteRow = function(ip,name){
     document.getElementById('removeIp').click();
 }

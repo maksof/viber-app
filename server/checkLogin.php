@@ -15,7 +15,7 @@
                 $fpass = rtrim($data[1]);
                 if($pass == $fpass && $email == $femail){
                     session_start();
-                    $_SESSION["usename"] = $femail;
+                    $_SESSION["username"] = $femail;
                     header("Location: ../index.php");
                     die();
                 }

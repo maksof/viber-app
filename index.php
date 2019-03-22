@@ -1,4 +1,4 @@
-<?php session_start(); if(!$_SESSION['usename']) header("Location:login.php"); ?>
+<?php session_start(); if(!$_SESSION['username']) header("Location:login.php"); ?>
  <html lang="en">
   <head>
     <meta charset="utf-8">
@@ -31,11 +31,11 @@
         <ul id="main-menu" class="nav navbar-nav navbar-right">
           <li class="dropdown hidden-xs">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-            <span class="fa fa-user padding-right-small" style="position:relative;top: 3px;"></span> <?php echo $_SESSION['usename']; ?>
+            <span class="fa fa-user padding-right-small" style="position:relative;top: 3px;"></span> <?php echo $_SESSION['username']; ?>
             <i class="fa fa-caret-down"></i>
             </a>
             <ul class="dropdown-menu">
-              <li><a href="http://173.82.52.190:6969/login/index.php/ipallow/editaccount">Password Change</a></li>
+              <li><a href="change-pass.php">Password Change</a></li>
               <li class="divider"></li>
               <li><a tabindex="-1" href="server/logout.php">Logout</a></li>
             </ul>
