@@ -42,8 +42,7 @@
 <?php 
     
     if(isset($_GET['notFound'])){
-        echo "
-            <script>
+        echo "<script>
                 window.notificationService.notify({
                   title: 'Reset Error!',
                   text: 'Previous password not match enter valid password',
@@ -53,8 +52,7 @@
                   duration: 5000,
                   showRemoveButton: true
                 })
-
-            </script>";
+             </script>";
     }
 
 ?>
