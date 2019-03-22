@@ -8,7 +8,6 @@
         $lineBreak = "\n";
         $file = explode($lineBreak, file_get_contents($myFile));
         $date = date("Y/m/d");
-        echo $loginDate;
         if($date < $loginDate){
             for($i=0; $i < count($file); $i++){
                 $data = explode("#",$file[$i]);
