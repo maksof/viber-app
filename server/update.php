@@ -17,6 +17,8 @@
         for($i=0; $i < count($file); $i++){
             $data = explode("#",$file[$i]);
             if($data[0] == $ipAddress){
+                shell_exec("sudo /sbin/iptables -A Admin -s ".$ipAddress." -j ACCEPT");
+                shell_exec("sudo service iptables save");
                 $file[$i] = $ip." #".$name;
             }
         }
