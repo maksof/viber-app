@@ -1,4 +1,5 @@
-<html lang="en">
+<?php session_start(); if(!$_SESSION['usename']) header("Location:login.php"); ?>
+ <html lang="en">
   <head>
     <meta charset="utf-8">
     <title>Security Panel</title>
@@ -30,13 +31,13 @@
         <ul id="main-menu" class="nav navbar-nav navbar-right">
           <li class="dropdown hidden-xs">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-            <span class="fa fa-user padding-right-small" style="position:relative;top: 3px;"></span> User
+            <span class="fa fa-user padding-right-small" style="position:relative;top: 3px;"></span> <?php echo $_SESSION['usename']; ?>
             <i class="fa fa-caret-down"></i>
             </a>
             <ul class="dropdown-menu">
               <li><a href="http://173.82.52.190:6969/login/index.php/ipallow/editaccount">Password Change</a></li>
               <li class="divider"></li>
-              <li><a tabindex="-1" href="server/logout">Logout</a></li>
+              <li><a tabindex="-1" href="server/logout.php">Logout</a></li>
             </ul>
           </li>
         </ul>
@@ -84,6 +85,7 @@
                     <td><?php echo $data[0]; ?></td>
                     <td>
                       <a href="#myModal" id="removeip" role="button" data-toggle="modal" data-id="<?php echo 'NETWORKING-'.$data[0]; ?>"><i class="fa fa-trash-o"></i></a>
+                      <a href="#updateModal" id="updateIp" role="button" data-toggle="modal" data-id="<?php echo 'NETWORKING-'.$data[0]; ?>"><i class="fa fa-edit"></i></a>
                     </td>
                   </tr>
                 <?php                       
@@ -119,6 +121,7 @@
                     <td><?php echo $data[0]; ?></td>
                     <td>
                       <a href="#myModal" id="removeip" role="button" data-toggle="modal" data-id="<?php echo 'ROUTING-'.$data[0]; ?>"><i class="fa fa-trash-o"></i></a>
+                      <a href="#updateModal" id="updateIp" role="button" data-toggle="modal" data-id="<?php echo 'ROUTING-'.$data[0]; ?>"><i class="fa fa-edit"></i></a>
                     </td>
                   </tr>
                 <?php                       
@@ -154,11 +157,14 @@
                     <td><?php echo $data[0]; ?></td>
                     <td>
                       <a href="#myModal" id="removeip" role="button" data-toggle="modal" data-id="<?php echo 'MAPPING-'.$data[0]; ?>"><i class="fa fa-trash-o"></i></a>
+                      <a href="#updateModal" id="updateIp" role="button" data-toggle="modal" data-id="<?php echo 'MAPPING-'.$data[0]; ?>"><i class="fa fa-edit"></i></a>
                     </td>
                   </tr>
                 <?php                       
                       }
                   }
+                  
+                  echo 'User IP - '.$_SERVER['REMOTE_ADDR'];
                 ?>
               </tbody>
             </table>
@@ -181,6 +187,40 @@
                 <div class="modal-footer">
                   <button class="btn btn-default" data-dismiss="modal" aria-hidden="true">Cancel</button>
                   <button class="btn btn-danger" type="submit">Delete</button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+		<!-- Update Modal -->
+        <div class="modal small fade" id="updateModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">�</button>
+                <h3 id="myModalLabel">Update Modal</h3>
+              </div>
+              <form class="updateips" action="server/update.php" method="post">
+                <input type="hidden" name="ipid" id="ipid">
+                  <div class="modal-body">
+                    <div class="col-sm-12 col-md-12">
+                        <div class="col-sm-3 col-md-3">
+                          <label>Service</label>
+                        </div>
+                        <div class="col-sm-9 col-md-9">
+                          <input name="serviceName" value="" type="text" class="form-control" required="">
+                        </div>
+                        <div class="col-sm-3 col-md-3">
+                          <label>Enter IP</label>
+                        </div>
+                        <div class="col-sm-9 col-md-9">
+                          <input name="ipName" value="117.102.60.113" pattern="\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}" type="text" class="form-control" required="">
+                        </div>
+                   </div>
+                  </div>
+                <div class="modal-footer">
+                  <button class="btn btn-default" data-dismiss="modal" aria-hidden="true">Cancel</button>
+                  <button class="btn btn-danger" type="submit">Update</button>
                 </div>
               </form>
             </div>
@@ -342,12 +382,44 @@
       </div>
     </div>
 
+   <?php
+        if(isset($_GET['login'])){
+            $email = $_GET['email'];
+            $pass = $_GET['pass'];
+
+            $filename = getcwd().DIRECTORY_SEPARATOR."server".DIRECTORY_SEPARATOR."user.txt";
+            $file = fopen( $filename, "r" );
+
+            if( $file == false ) {
+                echo ( "Error in opening file" );
+                exit();
+            }
+
+            $filesize = filesize( $filename );
+            $filetext = fread( $file, $filesize );
+            fclose( $file );
+
+            $userObj = unserialize($filetext);
+
+            if($email == $userObj->user && $pass == $userObj->pass){       
+                header('Location:public/dashboard.php');
+            }else{
+                echo "<pre style='color:white;'>User Not Login</pre>";
+            }
+
+        }
+    ?>
+   
     <script type="text/javascript">
       $(document).on("click", "#removeip", function () {
           var id = $(this).data('id');
           $(".removeips #ipid").val( id );
       });
       
+      $(document).on("click", "#updateIp", function () {
+          var id = $(this).data('id');
+          $(".updateips #ipid").val( id );
+      });
       
       function startfirewall()
       {
