@@ -18,7 +18,7 @@
                 <div class="modal-content">
                     <form method="post" class='col-12' onsubmit="return changePassValidate()" name="changePass" action="server/changePass.php">
                         <div class="form-group">
-                            <input type="password" class="form-control" placeholder="Previous Password" name="pPass">
+                            <input type="password" class="form-control" placeholder="Old Password" name="pPass">
                         </div>
                         <div class="form-group">
                             <input type="password" class="form-control" placeholder="New Password" name="nPass">

@@ -37,7 +37,7 @@ var changePassValidate = function(){
         toaster('Warning','Please enter new password','warning');
         return false;
     }else if(!confirmPass){
-        toaster('Warning','Please eonfirm password','warning');
+        toaster('Warning','Please confirm password','warning');
         return false;
     }else if(newPass != confirmPass){
         toaster('Warning','Both password and confirm password must be same','warning');
