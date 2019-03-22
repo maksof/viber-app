@@ -47,6 +47,25 @@ var changePassValidate = function(){
     }
 }
 
+var toaster = function (errorMsg,msg,type) {
+   window.notificationService.notify({
+        // title
+        title: errorMsg,
+        // notification message
+        text: msg,
+        // 'success', 'warning', 'error'
+        type: type,
+        // 'top-right', 'bottom-right', 'top-left', 'bottom-left'
+        position: 'top-right',
+        // auto close
+        autoClose: true,
+        // 5 seconds
+        duration: 5000,
+        // shows close button
+        showRemoveButton: true
+    });
+}
+
 var deleteRow = function(ip,name){
     document.getElementById('removeIp').click();
 }

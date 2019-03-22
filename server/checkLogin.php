@@ -1,5 +1,6 @@
 <?php
     if(isset($_POST['login'])){
+        session_start();
         $email = $_POST['email'];
         $pass = $_POST['pass'];
         $myFile = getcwd().DIRECTORY_SEPARATOR."db".DIRECTORY_SEPARATOR."tbl_login.txt";  
@@ -14,16 +15,17 @@
                 $femail = rtrim($data[0]);
                 $fpass = rtrim($data[1]);
                 if($pass == $fpass && $email == $femail){
-                    session_start();
                     $_SESSION["username"] = $femail;
                     header("Location: ../index.php");
                     die();
                 }
             } 
-            header("Location: ../login.php?invalid");
+            $_SESSION["invalid"] = "invalid";
+            header("Location: ../login.php");
             die();
         }else{
-            header("Location: ../login.php?dateError");
+            $_SESSION["dateError"] = "dateError";
+            header("Location: ../login.php");
             die();
         }
     }

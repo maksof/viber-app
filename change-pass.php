@@ -40,19 +40,9 @@
 
 
 <?php 
-    
-    if(isset($_GET['notFound'])){
-        echo "<script>
-                window.notificationService.notify({
-                  title: 'Reset Error!',
-                  text: 'Previous password not match enter valid password',
-                  type: 'error',
-                  position: 'top-right',
-                  autoClose: true,
-                  duration: 5000,
-                  showRemoveButton: true
-                })
-             </script>";
+    if(isset($_SESSION['notFound'])){
+        echo "<script> toaster('Reset Error!','Previous password not match enter valid password','error') </script>";
+        unset($_SESSION['notFound']);
     }
 
 ?>

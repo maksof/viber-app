@@ -27,11 +27,13 @@
         if($isPasswordChange){       
             $file = implode("\n",$file);
             file_put_contents($myFile, $file);
-            session_destroy();
+            unset($_SESSION['username']);
+            $_SESSION['passChange'] = 'change';
             header("Location: ../login.php");
             die();
         }else{
-            header("Location: ../change-pass.php?notFound");
+            $_SESSION['notFound'] = 'notChange';
+            header("Location: ../change-pass.php");
             die();
         }
     }

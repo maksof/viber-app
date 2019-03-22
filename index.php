@@ -14,6 +14,7 @@
     <link rel="stylesheet" type="text/css" href="assets/css/premium.css">
     <link rel="stylesheet" type="text/css" href="assets/css/fonts.css">
     <link rel="stylesheet" type="text/css" href="assets/css/style.css">
+    <link rel="stylesheet" type="text/css" href="assets/css/notify.css">
     <link rel="stylesheet" type="text/css" href="assets/css/dataTables.bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <script src="assets/js/jquery-1.11.1.min.js" type="text/javascript"></script>
@@ -379,6 +380,8 @@
         </div>
       </div>
     </div>
+    <script src="assets/js/login.js"></script>
+    <script src="assets/js/notify.js"></script>
 
    <?php
         if(isset($_GET['login'])){
@@ -404,7 +407,19 @@
             }else{
                 echo "<pre style='color:white;'>User Not Login</pre>";
             }
+        }
 
+        if(isset($_SESSION['delete'])){
+            echo "<script> toaster('Success','Data delete successfully','success'); </script>";
+            unset($_SESSION['delete']);
+        }
+        if(isset($_SESSION['update'])){
+            echo "<script> toaster('Success','Data update successfully','success'); </script>";
+            unset($_SESSION['update']);
+        }
+        if(isset($_SESSION['save'])){
+            echo "<script> toaster('Success','Data Add successfully','success'); </script>";
+            unset($_SESSION['save']);
         }
     ?>
    
