@@ -41,7 +41,7 @@
 
 <?php 
     if(isset($_SESSION['notFound'])){
-        echo "<script> toaster('Reset Error!','Previous password not match enter valid password','error') </script>";
+        echo "<script> toaster('Reset Error!','Old password not match','error') </script>";
         unset($_SESSION['notFound']);
     }
 
